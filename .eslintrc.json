@@ -53,6 +53,7 @@
     "react/jsx-key": ["error", { "checkFragmentShorthand": true }],
     "react/jsx-newline": "off",
     "react-perf/jsx-no-jsx-as-prop": "off",
+    "react/prop-types": "off",
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
