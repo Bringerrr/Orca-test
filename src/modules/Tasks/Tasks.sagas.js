@@ -5,7 +5,7 @@ import {
   getTasks,
   createTask as createTaskAction,
   createTaskSuccess,
-} from './Tasks.slice'
+} from './Tasks.reducer'
 
 function* getTasksSaga() {
   const tasks = yield call(fetchTasks)

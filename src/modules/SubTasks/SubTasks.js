@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button } from 'components/atoms'
 import { Task } from 'components/organisms'
-import { getTasks, createTask } from './SubTasks.slice'
+import { getTasks, createTask } from './SubTasks.reducer'
 
 const Tasks = () => {
   const dispatch = useDispatch()
