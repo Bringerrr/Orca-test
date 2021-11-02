@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.button`
+export const Wrapper = styled.span`
   border-radius: 3px;
-  padding: 3px 8px;
+  padding: 2px;
 `
