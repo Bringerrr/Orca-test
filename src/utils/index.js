@@ -1,0 +1,5 @@
+export { default as delay } from './delay'
+export { default as groupBy } from './groupBy'
+export { default as sortAlph } from './sortAlph'
+export { default as without } from './without'
+export { default as Storage } from './storage'

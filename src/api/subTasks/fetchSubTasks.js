@@ -1,8 +1,7 @@
-import Storage from 'utils/storage'
-import delay from 'utils/delay'
+import { delay, Storage } from 'utils'
 
-export default delay(taskId => {
+export default delay(() => {
   const subTasks = Storage.subTasks.get()
 
-  return subTasks.filter(subTask => subTask.taskId === taskId)
+  return subTasks
 })

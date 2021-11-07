@@ -1,6 +1,16 @@
 import React from 'react'
-import { Wrapper } from './Label.styles'
+import { Cross } from 'assets'
+import { LabelWrapper, LabelIconContainer } from './Label.styles'
 
-const Label = props => <Wrapper {...props} />
+const Label = ({ children, haveDelete, onDelete }) => (
+  <LabelWrapper>
+    {children}
+    {haveDelete && (
+      <LabelIconContainer>
+        <Cross onClick={onDelete} />
+      </LabelIconContainer>
+    )}
+  </LabelWrapper>
+)
 
 export default Label

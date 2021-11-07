@@ -2,14 +2,21 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   items: [],
+  filteredItems: [],
   loading: false,
+  groupedSubtasks: {},
+  filters: {
+    sort: [null, null],
+    labels: [],
+    search: '',
+  },
 }
 
 export const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
-    createTask: state => {
+    createTaskInit: state => {
       state.loading = true
     },
     createTaskSuccess: (state, action) => {
@@ -19,16 +26,45 @@ export const tasksSlice = createSlice({
     getTasks: () => {},
     setTasks: (state, action) => {
       state.items = action.payload
-      state.loading = false
+      state.filteredItems = action.payload
     },
     deleteTask: (state, action) => {
-      const taskId = action.payload
+      state.items = state.items.filter(task => task.id !== action.payload)
+    },
+    setGroupedSubtasks: (state, action) => {
+      state.groupedSubtasks = action.payload
+    },
+    addGroupedSubtasks: (state, action) => {
+      const { taskId, subtasks } = action.payload
 
-      state.tasks = state.tasks.filter(task => task.id !== taskId)
+      state.groupedSubtasks[taskId] = subtasks
+    },
+    deleteSubtask: (state, action) => {
+      const { taskId, subtaskId } = action.payload
+
+      state.groupedSubtasks[taskId] =
+        state.groupedSubtasks[taskId].filter(st => st.id !== subtaskId) || []
+    },
+    setFilters: (state, action) => {
+      state.filters = { ...state.filters, ...action.payload }
+    },
+    setFiltedTasks: (state, action) => {
+      state.filteredItems = action.payload
     },
   },
 })
 
-export const { getTasks, setTasks, createTask, createTaskSuccess } = tasksSlice.actions
+export const {
+  getTasks,
+  setTasks,
+  createTaskInit,
+  createTaskSuccess,
+  deleteTask,
+  setGroupedSubtasks,
+  addGroupedSubtasks,
+  deleteSubtask,
+  setFilters,
+  setFiltedTasks,
+} = tasksSlice.actions
 
 export default tasksSlice.reducer

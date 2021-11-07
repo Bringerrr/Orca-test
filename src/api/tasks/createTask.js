@@ -1,6 +1,5 @@
 import faker from 'faker'
-import Storage from 'utils/storage'
-import delay from 'utils/delay'
+import { delay, Storage } from 'utils'
 import { labels } from '../config'
 import { getRandomNumber } from '../utils'
 
@@ -26,5 +25,5 @@ export default delay(() => {
   Storage.tasks.set([...tasks, task])
   Storage.subTasks.set([...subTasks, ...subTaskList])
 
-  return task
+  return { task, subtasks: subTaskList }
 })
